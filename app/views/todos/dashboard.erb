@@ -7,24 +7,31 @@
 
 <body align="center">
 
-<% if @user_tasks == nil %>
+<% if @user_tasks == [] %>
   No Tasks Yet Toto!
 <% else %>
   <% @user_tasks.each do |task| %>
-    <%= user_tasks.title %>
-    <%= user_tasks.description %>
+    <p>Title: <%= task.title %></p>
+    <p>Description: <%= task.description %></p>
+    <table align="center" border="0">
+      <tr>
+        <td>
+          <form action="/update_task_form">
+            <input type="submit" value="Update Task Toto!">
+          </form>
+        </td>
+        &nbsp;
+        <td>
+          <form action="/delete_todo">
+            <input type="submit" value="Delete Task Toto!">
+          </form>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <br>
   <% end %>
 <% end %>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -39,20 +46,21 @@
 <br>
 <br>
 
-
-
-  <form action="/user_account_settings">
-    <input type="submit" value="Change Your Settings Toto!">
-  </form>
-
-<br>
-<br>
-
-or
-
-<form action="/submit_logout" method="post">
-  <input type="submit" value="Goodbye Toto!">
-</form>
+  <table align="center" border="0">
+    <tr>
+      <td>
+        <form action="/user_account_settings">
+          <input type="submit" value="Change Your Settings Toto!">
+        </form>
+      </td>
+      &nbsp;
+      <td>
+        <form action="/submit_logout" method="post">
+          <input type="submit" value="Goodbye Toto!">
+        </form>
+      </td>
+    </tr>
+  </table>
 
 </body>
 </html>

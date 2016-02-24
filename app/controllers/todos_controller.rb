@@ -13,11 +13,11 @@ MyApp.post "/submit_todo_form" do
 end
 
 MyApp.get "/dashboard" do
-  @user_tasks = Todo.find_by_user_id(session["user_id"])
+  @user_tasks = Todo.where(user_id: session["user_id"])
   erb :"todos/dashboard"
 end
 
-MyApp.get "/update_todo" do
+MyApp.get "/update_task_form" do
   
   erb :"todos/update_todo"
 end
@@ -31,3 +31,4 @@ MyApp.get "/delete_todo" do
   
   erb :"todos/delete_todo"
 end
+
