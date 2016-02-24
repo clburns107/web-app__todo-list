@@ -1,1 +1,47 @@
-success your to do task was created
+<!doctype html>
+<html>
+<h1 align="center"> Good Dog!
+  <meta charset="utf-8">
+  <title>Todo Success Page</title>
+</h1>
+
+<body align="center">
+
+<%= @task.title %> was added to your todo list Toto!
+
+<br>
+<br>
+
+  <form action="/create_todo_form">
+    <input type="submit" value="Add a Task Toto!">
+  </form>
+
+<br>
+<br>
+
+  <form action="/dashboard">
+    <input type="submit" value="View Tasks Toto!">
+  </form>
+
+<br>
+<br>
+
+
+
+  <form action="/user_account_settings">
+    <input type="submit" value="Change Your Settings Toto!">
+  </form>
+
+<br>
+<br>
+
+or
+
+<form action="/submit_logout" method="post">
+  <input type="submit" value="Goodbye Toto!">
+</form>
+
+</body>
+</html>
+
+

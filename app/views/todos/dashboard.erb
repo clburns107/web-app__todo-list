@@ -7,12 +7,32 @@
 
 <body align="center">
 
-Show a list of all to do items. clickable to update page. or delete next to each one... or delete all?
+<% if @user_tasks == nil %>
+  No Tasks Yet Toto!
+<% else %>
+  <% @user_tasks.each do |task| %>
+    <%= user_tasks.title %>
+    <%= user_tasks.description %>
+  <% end %>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <br>
 <br>
 
-  <form action="/create_todo">
+  <form action="/create_todo_form">
     <input type="submit" value="Add a Task Toto!">
   </form>
 
