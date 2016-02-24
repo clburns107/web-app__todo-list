@@ -9,3 +9,7 @@
 MyApp.get "/" do
   erb :"logins/login_form"
 end
+
+MyApp.post "/submit_logout" do
+  erb :"logins/logout_success"
+end
