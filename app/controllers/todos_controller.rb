@@ -17,18 +17,22 @@ MyApp.get "/dashboard" do
   erb :"todos/dashboard"
 end
 
-MyApp.get "/update_task_form" do
-  
+MyApp.get "/update_task_form/:todo_id" do
+  @todo_id = params[:todo_id]
   erb :"todos/update_todo"
 end
 
-MyApp.post "/submit_update_todo" do
-
+MyApp.post "/submit_update_todo/:todo_id" do
+  @update_task = Todo.find_by_id(params[:todo_id])
+  @update_task.title = params[:title]
+  @update_task.description = params[:description]
+  @update_task.save
   erb :"todos/todo_was_updated"
 end
 
-MyApp.get "/delete_todo" do
-  
+MyApp.get "/delete_todo/:todo_id" do
+  @delete_task = Todo.find_by_id(params[:todo_id])
+  @delete_task.delete
   erb :"todos/delete_todo"
 end
 

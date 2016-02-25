@@ -7,14 +7,13 @@
 
 <body align="center">
 
-enter update forms here
+<p>Go ahead and update your task!</p>
 
-<br>
-<br>
-
-  <form action="/create_todo_form">
-    <input type="submit" value="Add a Task Toto!">
-  </form>
+<form action="/submit_update_todo/<%= @todo_id %>" method="post">
+  <p>Title: <input type="text" name="title"></p>
+  <p>Description: <input type="text" name="description"></p>
+  <input type="submit" value="Save Task Toto!">
+</form>
 
 <br>
 <br>

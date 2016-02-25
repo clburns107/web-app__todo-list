@@ -16,13 +16,13 @@
     <table align="center" border="0">
       <tr>
         <td>
-          <form action="/update_task_form">
+          <form action="/update_task_form/<%= task.id %>">
             <input type="submit" value="Update Task Toto!">
           </form>
         </td>
         &nbsp;
         <td>
-          <form action="/delete_todo">
+          <form action="/delete_todo/<%= task.id %>">
             <input type="submit" value="Delete Task Toto!">
           </form>
         </td>
