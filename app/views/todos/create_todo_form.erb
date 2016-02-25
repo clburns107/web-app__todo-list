@@ -7,11 +7,37 @@
 
 <body align="center">
 
+
+
+
+
+
+
 <form action="/submit_todo_form" method="post">
   <p>Title: <input type="text" name="title"></p>
   <p>Description: <input type="text" name="description"></p>
+
+  <select name="user_id">
+  <option>Give a dog a bone, Toto...</option>
+  <% @dogs.each do |dog| %>
+    <option value="<%= dog.id %>"> <%= dog.name %></option>
+  <% end %>
+  </select>
+
   <input type="submit" value="Save Task Toto!">
 </form>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <br>
 <br>

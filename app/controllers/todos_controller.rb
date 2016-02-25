@@ -2,6 +2,7 @@
 MyApp.get "/create_todo_form" do
   @current_user = User.find_by_id(session["user_id"])
   if @current_user != nil 
+    @dogs = User.all
     erb :"todos/create_todo_form"
   else
     erb :"logins/login_error"
@@ -14,7 +15,10 @@ MyApp.post "/submit_todo_form" do
     @task = Todo.new
     @task.title = params[:title]
     @task.description = params[:description]
-    @task.user_id = session["user_id"]
+    @task.user_id = params[:user_id]
+    @task.creator_id = session["user_id"]
+    @task.assignor_id = session["user_id"]
+
     @task.save
 
     redirect "/dashboard"

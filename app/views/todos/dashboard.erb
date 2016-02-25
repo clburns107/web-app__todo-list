@@ -13,6 +13,8 @@
   <% @user_tasks.each do |task| %>
     <p>Title: <%= task.title %></p>
     <p>Description: <%= task.description %></p>
+    <p>Created by: <%= task.creator %>
+    <p>Assigned by: <%= task.assignor %>
     <table align="center" border="0">
       <tr>
         <td>
