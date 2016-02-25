@@ -11,6 +11,7 @@
   No Tasks Yet Toto!
 <% else %>
   <% @user_tasks.each do |task| %>
+    <p>Category: <%= task.category %>
     <p>Title: <%= task.title %></p>
     <p>Description: <%= task.description %></p>
     <p>Created by: <%= task.creator %>

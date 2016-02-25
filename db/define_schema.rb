@@ -12,3 +12,7 @@ DB.define_column("todos", "completed", "boolean")
 DB.define_column("todos", "user_id", "integer")
 DB.define_column("todos", "assignor_id", "integer")
 DB.define_column("todos", "creator_id", "integer")
+DB.define_column("todos", "category_id", "integer")
+
+DB.define_table("categories")
+DB.define_column("categories","name", "string")

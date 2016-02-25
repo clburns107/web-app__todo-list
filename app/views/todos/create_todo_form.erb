@@ -14,6 +14,13 @@
 
 
 <form action="/submit_todo_form" method="post">
+  <select name="category_id">
+  <option>Select a command, Toto...</option>
+  <% @categories.each do |category| %>
+    <option value="<%= category.id %>"> <%= category.name %></option>
+  <% end %>
+  </select>
+
   <p>Title: <input type="text" name="title"></p>
   <p>Description: <input type="text" name="description"></p>
 
@@ -23,8 +30,11 @@
     <option value="<%= dog.id %>"> <%= dog.name %></option>
   <% end %>
   </select>
-
+  
+  <p>
   <input type="submit" value="Save Task Toto!">
+  </p>
+
 </form>
 
 

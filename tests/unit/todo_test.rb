@@ -12,6 +12,12 @@ class TodoTest < Minitest::Test
     @dog1.password = "fidoisawesome"
     @dog1.save
 
+    @dog2 = User.new
+    @dog2.name = "Roscoe"
+    @dog2.email = "roscoe@roscoe.com"
+    @dog2.password = "roscoetherumrunner"
+    @dog2.save
+
     @task1 = Todo.new
     @task1.title = "Bark"
     @task1.description = "bark at the neighbor kids"
@@ -28,10 +34,10 @@ class TodoTest < Minitest::Test
   end
   
   def test_creator
-    assert_includes(@dog1.name, @user1.creator)
+    assert_includes(@dog1.name, @task1.creator)
   end
 
-  def test_creator
-    assert_includes(@chili1.contestant.first_name, @contestant1.first_name)
+  def test_assignor
+    assert_includes(@dog1.name, @task1.assignor)
   end
 end

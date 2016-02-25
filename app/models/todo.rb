@@ -13,4 +13,9 @@ class Todo < ActiveRecord::Base
     return assignor.name
   end
 
+  def category
+    category= Category.find_by_id(self.category_id)
+    return category.name
+  end
+
 end
