@@ -35,7 +35,6 @@ MyApp.post "/submit_password_reset" do
     @update_user = User.find_by_email(params[:email])
     @update_user.password = params[:new_password]
     @update_user.save
-    erb :"users/password_was_updated"
   else
     erb :"logins/login_error"
   end

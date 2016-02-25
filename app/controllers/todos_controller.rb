@@ -16,7 +16,8 @@ MyApp.post "/submit_todo_form" do
     @task.description = params[:description]
     @task.user_id = session["user_id"]
     @task.save
-    erb :"todos/todo_was_created"
+    
+    redirect "/todos/dashboard"
   else
     erb :"logins/login_error"
   end
