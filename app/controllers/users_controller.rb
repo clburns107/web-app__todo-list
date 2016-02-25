@@ -10,7 +10,14 @@ MyApp.post "/submit_new_user" do
   @new_user.email = params[:email]
   @new_user.password = params[:password]
   @new_user.save
-  erb :"users/user_was_created"
+
+  if @new_user.password = params[:password]
+    session["user_id"] = @new_user.id
+    @user_tasks = Todo.where(user_id: session["user_id"])
+    erb :"todos/dashboard"
+  else
+    erb :"login_error"
+  end
 end
 
 MyApp.get "/user_account_settings" do
