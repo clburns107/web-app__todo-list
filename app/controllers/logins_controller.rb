@@ -11,8 +11,13 @@ MyApp.get "/" do
 end
 
 MyApp.post "/submit_logout" do
-  session["user_id"] = nil
-  erb :"logins/logout_success"
+  @current_user = User.find_by_id(session["user_id"])
+  if @current_user != nil 
+    session["user_id"] = nil
+    erb :"logins/logout_success"
+  else
+    erb :"logins/login_error"
+  end
 end
 
 MyApp.get "/login_error" do
@@ -21,7 +26,7 @@ end
 
 
 MyApp.post "/submit_login" do
-@current_user = User.find_by_email(params[:email])
+  @current_user = User.find_by_email(params[:email])
   if @current_user.password == params[:password]
     session["user_id"] = @current_user.id
     @user_tasks = Todo.where(user_id: session["user_id"])

@@ -14,18 +14,33 @@ MyApp.post "/submit_new_user" do
 end
 
 MyApp.get "/user_account_settings" do
-  erb :"users/user_account_settings"
+  @current_user = User.find_by_id(session["user_id"])
+  if @current_user != nil 
+    erb :"users/user_account_settings"
+  else
+    erb :"logins/login_error"
+  end
 end
 
 MyApp.post "/submit_password_reset" do
-  @update_user = User.find_by_email(params[:email])
-  @update_user.password = params[:new_password]
-  @update_user.save
-  erb :"users/password_was_updated"
+  @current_user = User.find_by_id(session["user_id"])
+  if @current_user != nil 
+    @update_user = User.find_by_email(params[:email])
+    @update_user.password = params[:new_password]
+    @update_user.save
+    erb :"users/password_was_updated"
+  else
+    erb :"logins/login_error"
+  end
 end
 
 MyApp.post "/submit_delete_account" do
-  @delete_user = User.find_by_email(params[:email])
-  @delete_user.delete
-  erb :"users/user_was_deleted"
+  @current_user = User.find_by_id(session["user_id"])
+  if @current_user != nil 
+    @delete_user = User.find_by_email(params[:email])
+    @delete_user.delete
+    erb :"users/user_was_deleted"
+  else
+    erb :"logins/login_error"
+  end
 end
