@@ -16,12 +16,11 @@ MyApp.post "/submit_todo_form" do
     @task = Todo.new
     @task.title = params[:title]
     @task.description = params[:description]
-    @task.user_id = params[:user_id]
     @task.category_id = params[:category_id]
     @task.creator_id = session["user_id"]
     @task.assignor_id = session["user_id"]
-
     @task.save
+    @task.set_assignees(params[:user_id_numbers])
 
     redirect "/dashboard"
   else
@@ -31,9 +30,11 @@ end
 
 MyApp.get "/dashboard" do
   @current_user = User.find_by_id(session["user_id"])
-  if @current_user != nil 
-    @all_tasks= Todo.where(user_id: session["user_id"])
-    @ordered_tasks = @all_tasks.order(:category_id)
+  if @current_user != nil
+
+    @all_assignments= Assignee.where(user_id: session["user_id"])
+    @all_tasks= @all_assignments.todo_items
+    @all_tasks.order(:category_id)
     @user_tasks = @ordered_tasks
     erb :"todos/dashboard"
   else

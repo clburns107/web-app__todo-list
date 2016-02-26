@@ -13,7 +13,7 @@ MyApp.post "/submit_new_user" do
 
   if @new_user.password = params[:password]
     session["user_id"] = @new_user.id
-    @user_tasks = Todo.where(user_id: session["user_id"])
+    @user_tasks = Assignee.where(user_id: session["user_id"])
     erb :"todos/dashboard"
   else
     erb :"login_error"
