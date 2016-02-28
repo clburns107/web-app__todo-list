@@ -33,8 +33,11 @@ MyApp.get "/dashboard" do
   if @current_user != nil
     @all_assignments= Assignee.where(user_id: session["user_id"])
     @todo_tasks = Assignee.todo_items(@all_assignments)
-    @user_tasks = @todo_tasks.order(:category_id)
-
+      if @todo_tasks == []
+        @user_tasks = []
+      else
+        @user_tasks = @todo_tasks.order(:category_id)
+      end
     erb :"todos/dashboard"
   else
     erb :"logins/login_error"
