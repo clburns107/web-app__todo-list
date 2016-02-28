@@ -35,27 +35,27 @@ class TodoTest < Minitest::Test
     @task1.title = "Bark at the window"
     @task1.description = "bark at the neighbor kids"
     @task1.completed = false
-    @task1.assignor_id = @dog1
-    @task1.creator_id = @dog1
-    @task1.category_id = 
+    @task1.assignor_id = @dog1.id
+    @task1.creator_id = @dog1.id
+    @task1.category_id = @category2.id
     @task1.save
 
     @task1 = Todo.new
     @task1.title = "Sit at the door"
     @task1.description = "wait for the mailman"
     @task1.completed = false
-    @task1.assignor_id = @dog1
-    @task1.creator_id = @dog1
-    @task1.category_id = 
+    @task1.assignor_id = @dog1.id
+    @task1.creator_id = @dog1.id
+    @task1.category_id = @category1.id
     @task1.save
 
     @task1 = Todo.new
     @task1.title = "Lay down on the bed"
     @task1.description = "sleep on the pillows"
     @task1.completed = false
-    @task1.assignor_id = @dog2
-    @task1.creator_id = @dog2
-    @task1.category_id = 
+    @task1.assignor_id = @dog2.id
+    @task1.creator_id = @dog2.id
+    @task1.category_id = @category3.id
     @task1.save
 
 
@@ -79,7 +79,7 @@ class TodoTest < Minitest::Test
   end
   
   def test_todo_items
-    assert_includes(@dog1.name, @task1.creator)
+    
   end
 
   

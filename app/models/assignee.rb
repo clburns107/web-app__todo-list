@@ -1,14 +1,17 @@
 class Assignee < ActiveRecord::Base
   
-  #Class Method for collection
+  #Class Method for collection of an assignee's assignments
+  #
+  #takes an argument of a collection of assignments
   #
   #Returns all todo items assigned to an assignee
-  class << self
-    def todo_items
-      task = Todo.find_by_id(self.todo_id)
-      return task
+    def self.todo_items(assignments)
+      all_tasks = []
+      assignments.each do |assignment|
+        all_tasks= Todo.where(id: assignment.todo_id)
+      end
+      return all_tasks
     end
-  end
 
   # returns a todo object for an assignee
   def todo_object
@@ -24,5 +27,4 @@ class Assignee < ActiveRecord::Base
   end
   
   
-
 end
